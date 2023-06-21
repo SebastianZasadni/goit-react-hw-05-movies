@@ -6,7 +6,7 @@ import { PageUpBtn, PageDownBtn } from 'components/LoadButton/LoadButtons';
 import css from './Movies.module.css';
 
 const Movies = () => {
-  
+
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
   const pageURL = searchParams.get('page') ?? '';
@@ -36,7 +36,7 @@ const Movies = () => {
       }
     };
     fetchData();
-  }, [query, page]);
+  }, [query, pageURL]);
 
   const handleSubmit = query => {
     setPage(1);
