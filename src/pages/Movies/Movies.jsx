@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchMoviesByQuery } from 'api/fetchMovies';
+import { fetchMoviesByQuery } from 'api/fetchAPI';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 
 const Movies = () => {
@@ -14,7 +14,6 @@ const Movies = () => {
         const response = await fetchMoviesByQuery(query, page);
         const movies = response.data.results;
         setMovies([...movies]);
-        console.log(movies);
       } catch (error) {
         console.log(error);
       } finally {
