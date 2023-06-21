@@ -16,6 +16,10 @@ const Movies = () => {
   const location = useLocation();
 
   useEffect(() => {
+    console.log(query, pageURL)
+    if (!query && !pageURL) {
+      return;
+    }
     const fetchData = async () => {
       try {
         const response = await fetchMoviesByQuery(query, pageURL);
