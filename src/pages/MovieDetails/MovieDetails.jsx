@@ -24,7 +24,7 @@ const MovieDetails = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [movieId]);
 
   const { title, overview, genres, vote_average, poster_path, release_date } =
     movieData;

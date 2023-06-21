@@ -19,7 +19,7 @@ const Reviews = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [movieId]);
 
   return (
     <ul>
