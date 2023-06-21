@@ -7,7 +7,6 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
   const [page, setPage] = useState('');
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {

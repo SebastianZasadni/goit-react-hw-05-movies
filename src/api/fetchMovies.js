@@ -16,9 +16,9 @@ export const fetchTrendingMovies = async() => {
     return response;
 }
 
-export const fetchMovieById = async(id) => {
-    const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
-    )
-    return response;
-}
+// export const fetchMovieById = async(id) => {
+//     const response = await axios.get(
+//         `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
+//     )
+//     return response;
+// }
