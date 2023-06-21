@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchMoviesByQuery } from 'api/fetchMovies';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 
 const Movies = () => {
