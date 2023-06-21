@@ -6,6 +6,7 @@ import { PageUpBtn, PageDownBtn } from 'components/LoadButton/LoadButtons';
 import css from './Movies.module.css';
 
 const Movies = () => {
+  
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
   const pageURL = searchParams.get('page') ?? '';
@@ -16,7 +17,6 @@ const Movies = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(query, pageURL)
     if (!query && !pageURL) {
       return;
     }
@@ -47,10 +47,12 @@ const Movies = () => {
     setPage(prevPage => prevPage + 1);
     setSearchParams({ query: query, page: page + 1 });
   };
+
   const handleDown = () => {
     setPage(prevPage => prevPage - 1);
     setSearchParams({ query: query, page: page - 1 });
   };
+
   return (
     <div className={css.moviesSection}>
       <SearchBar handleSubmit={handleSubmit} />
