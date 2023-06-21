@@ -25,7 +25,7 @@ const Reviews = () => {
     <ul>
       {reviews.length === 0 && <p>We don't have any reviews for this movies</p>}
       {reviews
-        .filter((review, index) => index < 5)
+        .filter((review, index) => index < 10)
         .map(review => {
           const { id, author, content } = review;
           return (

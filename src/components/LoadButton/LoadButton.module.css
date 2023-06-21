@@ -1,0 +1,16 @@
+.paginationBtn {
+  width: 100px;
+  height: 28px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  box-shadow: 3px 3px rgb(218, 214, 214);
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+.paginationBtn:hover {
+  color: #fff;
+  background-color: rgb(31, 29, 29);
+
+}

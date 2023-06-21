@@ -1,8 +1,28 @@
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.moviesSection {
+  margin-top: 20px;
+  text-align: center;
+}
+.moviesList {
+  margin-top: 10px;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
 .movieLink {
   text-decoration: none;
   font-size: 20px;
+  color: black;
 }
 .movieLink:hover {
-  color: green;
-  font-size: 25px;
+  color: grey;
+  font-size: 21px;
 }

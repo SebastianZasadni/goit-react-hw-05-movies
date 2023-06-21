@@ -22,7 +22,6 @@ const Movies = () => {
         if (!total_results && query) {
           return alert('Wooops! We found nothing.');
         }
-
         setTotalPages(total_pages);
         setMovies([...movies]);
       } catch (error) {
@@ -42,9 +41,9 @@ const Movies = () => {
   const handleDown = () => setPage(prevPage => prevPage - 1);
 
   return (
-    <div>
+    <div className={css.moviesSection}>
       <SearchBar handleSubmit={handleSubmit} />
-      <ul>
+      <ul className={css.moviesList}>
         {movies.map(movie => {
           return (
             <li key={movie.id}>
@@ -59,8 +58,10 @@ const Movies = () => {
           );
         })}
       </ul>
-      {page !== totalPages && totalPages > 1 ? <PageUpBtn onUp={handleUp} /> : null}
       {page !== 1 ? <PageDownBtn onDown={handleDown} /> : null}
+      {page !== totalPages && totalPages > 1 ? (
+        <PageUpBtn onUp={handleUp} />
+      ) : null}
     </div>
   );
 };

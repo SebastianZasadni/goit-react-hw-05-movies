@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'; 
+import css from './LoadButton.module.css';
 
 export const PageUpBtn = ({ onUp }) => {
   return (
-    <button type="submit" onClick={onUp}>
+    <button type="submit" className={css.paginationBtn} onClick={onUp}>
       Page up
     </button>
   );
@@ -10,7 +11,7 @@ export const PageUpBtn = ({ onUp }) => {
 
 export const PageDownBtn = ({ onDown }) => {
   return (
-    <button type="submit" onClick={onDown}>
+    <button type="submit" className={css.paginationBtn} onClick={onDown}>
       Page down
     </button>
   );
