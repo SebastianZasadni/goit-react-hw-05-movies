@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchTrendingMovies } from 'api/fetchAPI';
+import css from './Home.module.css';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -23,7 +24,7 @@ const Home = () => {
     <div>
       <ul>
         {movies.map(movie => {
-            return <li key={movie.id}><Link to={`/movies/${movie.id}`}>{movie.title}</Link></li>
+            return <li key={movie.id}><Link className={css.movieLink} to={`/movies/${movie.id}`}>{movie.title}</Link></li>
         })}
       </ul>
     </div>

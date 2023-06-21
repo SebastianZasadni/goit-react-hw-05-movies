@@ -1,0 +1,15 @@
+.castCard{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+}
+.castCardImage{
+    display: block;
+    background-image:url('https://style.anu.edu.au/_anu/4/images/placeholders/person.png');
+    background-size: cover;
+    width: 250px;
+    height: 100%;
+}

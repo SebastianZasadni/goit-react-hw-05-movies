@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'; 
+
 export const PageUpBtn = ({ onUp }) => {
   return (
     <button type="submit" onClick={onUp}>
@@ -13,3 +15,10 @@ export const PageDownBtn = ({ onDown }) => {
     </button>
   );
 };
+
+PageUpBtn.propTypes = {
+  onUp: PropTypes.func.isRequired,
+}
+PageDownBtn.propTypes = {
+  onDown: PropTypes.func.isRequired,
+}

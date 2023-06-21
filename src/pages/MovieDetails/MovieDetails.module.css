@@ -1,0 +1,35 @@
+.movieSection {
+  padding: 20px;
+}
+.movieCard {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+}
+.movieCardImage {
+  display: block;
+  width: 300px;
+  height: 500px;
+}
+.movieCardTitle {
+  font-weight: 700;
+  font-size: 35px;
+}
+.backBtn {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+.backBtn:hover {
+  color: red;
+  font-size: 22px;
+}
+.additionalLink {
+  text-decoration: none;
+  font-size: 20px;
+  margin-right: 10px;
+}
+.additionalLink:hover{
+    color: red;
+}
