@@ -1,10 +1,10 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { fetchMovieById } from 'api/fetchAPI';
-import { Reviews } from 'pages/Reviews/Reviews';
-import { Cast } from 'pages/Cast/Cast';
+import Reviews from 'pages/Reviews/Reviews';
+import Cast from 'pages/Cast/Cast';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieData, setMovieData] = useState([]);
   const location = useLocation();
@@ -65,3 +65,5 @@ export const MovieDetails = () => {
     </div>
   );
 };
+
+export default MovieDetails;

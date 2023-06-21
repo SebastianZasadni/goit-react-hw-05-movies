@@ -35,3 +35,5 @@ export const Cast = () => {
     </ul>
   );
 };
+
+export default Cast;
