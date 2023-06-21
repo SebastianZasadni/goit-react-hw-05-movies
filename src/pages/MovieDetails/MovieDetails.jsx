@@ -9,7 +9,6 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieData, setMovieData] = useState([]);
   const location = useLocation();
-  console.log(location)
   const backLink = `${
     location.state ? '/movies' + location.state.from.search : '/'
   }`;
@@ -38,7 +37,9 @@ const MovieDetails = () => {
 
   return (
     <div className={css.movieSection}>
-      <Link to={`${backLink}`} className={css.backBtn}>Go back</Link>
+      <Link to={`${backLink}`} className={css.backBtn}>
+        Go back
+      </Link>
       <div className={css.movieCard}>
         <img src={movieImage} alt={title} className={css.movieCardImage} />
         <div className={css.movieCardInfo}>
@@ -62,7 +63,8 @@ const MovieDetails = () => {
         <h4>Additional information</h4>
         <Link className={css.additionalLink} to="cast" element={<Cast />}>
           Cast
-        </Link><br/>
+        </Link>
+        <br />
         <Link className={css.additionalLink} to="reviews" element={<Reviews />}>
           Reviews
         </Link>
