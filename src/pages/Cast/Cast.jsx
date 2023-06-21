@@ -18,7 +18,7 @@ export const Cast = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [movieId]);
 
   return (
     <ul className={css.castCard}>
