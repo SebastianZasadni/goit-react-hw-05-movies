@@ -6,17 +6,19 @@ import { PageUpBtn, PageDownBtn } from 'components/LoadButton/LoadButtons';
 import css from './Movies.module.css';
 
 const Movies = () => {
-  const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
+  const pageURL = searchParams.get('page') ?? '';
+  const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(pageURL);
+  const [totalPages, setTotalPages] = useState(0);
+
   const location = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetchMoviesByQuery(query, page);
+        const response = await fetchMoviesByQuery(query, pageURL);
         const movies = response.data.results;
         const { total_results, total_pages } = response.data;
         if (!total_results && query) {
@@ -34,32 +36,39 @@ const Movies = () => {
 
   const handleSubmit = query => {
     setPage(1);
-    setSearchParams({ query: query });
+    setSearchParams({ query: query, page: 1 });
   };
 
-  const handleUp = () => setPage(prevPage => prevPage + 1);
-  const handleDown = () => setPage(prevPage => prevPage - 1);
-
+  const handleUp = () => {
+    setPage(prevPage => prevPage + 1);
+    setSearchParams({ query: query, page: page + 1 });
+  };
+  const handleDown = () => {
+    setPage(prevPage => prevPage - 1);
+    setSearchParams({ query: query, page: page - 1 });
+  };
   return (
     <div className={css.moviesSection}>
       <SearchBar handleSubmit={handleSubmit} />
       <ul className={css.moviesList}>
-        {movies.map(movie => {
-          return (
-            <li key={movie.id}>
-              <Link
-                className={css.movieLink}
-                to={`${movie.id}`}
-                state={{ from: location }}
-              >
-                {movie.title}
-              </Link>
-            </li>
-          );
-        })}
+        {query
+          ? movies.map(movie => {
+              return (
+                <li key={movie.id}>
+                  <Link
+                    className={css.movieLink}
+                    to={`${movie.id}`}
+                    state={{ from: location }}
+                  >
+                    {movie.title}
+                  </Link>
+                </li>
+              );
+            })
+          : null}
       </ul>
-      {page !== 1 ? <PageDownBtn onDown={handleDown} /> : null}
-      {page !== totalPages && totalPages > 1 ? (
+      {query && page !== 1 ? <PageDownBtn onDown={handleDown} /> : null}
+      {query && page !== totalPages && totalPages > 1 ? (
         <PageUpBtn onUp={handleUp} />
       ) : null}
     </div>
