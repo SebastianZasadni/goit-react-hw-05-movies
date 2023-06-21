@@ -1,19 +1,22 @@
 import React, { useState, useEffect, Suspense } from 'react';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { fetchMovieById } from 'api/fetchAPI';
 import { Reviews } from 'pages/Reviews/Reviews';
 import { Cast } from 'pages/Cast/Cast';
 
 export const MovieDetails = () => {
- const {movieId} = useParams();
+  const { movieId } = useParams();
   const [movieData, setMovieData] = useState([]);
+  const location = useLocation();
+  const backLink = `${
+    location.state ? '/movies' + location.state.from.search : '/'
+  }`;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data } = await fetchMovieById(movieId);
         setMovieData(data);
-        console.log(data);
       } catch (error) {
         console.log(error);
       } finally {
@@ -22,19 +25,22 @@ export const MovieDetails = () => {
     fetchData();
   }, []);
 
-  const { title, overview, genres, vote_average, poster_path, release_date } = movieData;
+  const { title, overview, genres, vote_average, poster_path, release_date } =
+    movieData;
 
   const movieImage = poster_path
     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
     : 'No image';
 
-const releaseYear = new Date(release_date).getFullYear();
+  const releaseYear = new Date(release_date).getFullYear();
 
   return (
     <div>
-      <p>Go back</p>
+      <Link to={`${backLink}`}>Go back</Link>
       <img src={movieImage} alt={title} />
-      <p>{title}({releaseYear})</p>
+      <p>
+        {title}({releaseYear})
+      </p>
       <p>User score: {vote_average}</p>
       <h4>Overview</h4>
       <p>{overview}</p>

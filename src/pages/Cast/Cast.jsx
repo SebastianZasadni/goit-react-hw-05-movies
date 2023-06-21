@@ -11,7 +11,6 @@ export const Cast = () => {
       try {
         const response = await fetchCastById(movieId);
         const { data } = response;
-        console.log(response);
         setCast(data.cast);
       } catch (error) {
         console.log(error);

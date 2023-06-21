@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { fetchMoviesByQuery } from 'api/fetchAPI';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState('');
-  const [page, setPage] = useState('');
+  const [page, setPage] = useState(1);
+  const [loadBtn, setLoadBtn] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') ?? '';
+  const location = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,8 +26,8 @@ const Movies = () => {
   }, [query, page]);
 
   const handleSubmit = query => {
-    setQuery(query);
     setPage(1);
+    setSearchParams({ query: query });
   };
 
   return (
@@ -34,11 +37,22 @@ const Movies = () => {
         {movies.map(movie => {
           return (
             <li key={movie.id}>
-              <Link to={`${movie.id}`}>{movie.title}</Link>
+              <Link to={`${movie.id}`} state={{ from: location }}>
+                {movie.title}
+              </Link>
             </li>
           );
         })}
       </ul>
+      <button type="submit" onClick={() => setPage(prevPage => prevPage + 1)}>
+        Page up
+      </button>
+      <button
+        type="submit"
+        onClick={() => (page > 1 ? setPage(prevPage => prevPage - 1) : null)}
+      >
+        Page down
+      </button>
     </div>
   );
 };
