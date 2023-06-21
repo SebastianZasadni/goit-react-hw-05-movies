@@ -1,10 +1,9 @@
-import { useParams } from "react-router-dom";
-import { fetchMovieById } from "api/fetchMovies";
+import { useParams } from 'react-router-dom';
 
 export const MovieDetails = () => {
-  const {movieId} = useParams();
-  console.log(movieId)
-  console.log('siema')
+  const { movieId } = useParams();
+  console.log(movieId);
+  console.log('siema');
   return (
     <div>
       <p>Go back</p>
